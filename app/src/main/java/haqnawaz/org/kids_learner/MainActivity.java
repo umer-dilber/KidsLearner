@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button btsky;
     Button btgrass;
     Button btroot;
-
+    Button btnreset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,47 +28,83 @@ public class MainActivity extends AppCompatActivity {
         btsky = findViewById(R.id.btnsky);
         btgrass = findViewById(R.id.btgrass);
         btroot = findViewById(R.id.btnroot);
+        btnreset = findViewById(R.id.btnreset);
 
-        txt1.setText("Yes, got it");
-
-        //generate random number
-        Random rand = new Random();
-        int i;
-        int num = rand.nextInt(3);
-        if(num == 0)
-        {
-            i = rand.nextInt(skyletters.length);
-            txt1.setText(Character.toString(skyletters[i]));
-        }
-        else {
-            if(num == 1)
-            {
-                i = rand.nextInt(grassletters.length);
-                txt1.setText(Character.toString(grassletters[i]));
-            }
-            else
-            {
-                i = rand.nextInt(rootlettetrs.length);
-                txt1.setText(Character.toString(rootlettetrs[i]));
-            }
-        }
-        txtResult.setText("Astaghfirullah");
-
-        // button listners
-        btsky.setOnClickListener(new View.OnClickListener() {
+        kidlearner();
+        btnreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(num == 0)
-                {
-                    txtResult.setText("Jaza'Allah");
-                }
+                kidlearner();
             }
         });
+
     }
 
 
+    public void kidlearner(){
+            Random rand = new Random();
+            int i;
+            int num = rand.nextInt(3);
 
+            if(num == 0)
+            {
+                i = rand.nextInt(skyletters.length);
+                txt1.setText(Character.toString(skyletters[i]));
+            }
+            else {
+                if(num == 1)
+                {
+                    i = rand.nextInt(grassletters.length);
+                    txt1.setText(Character.toString(grassletters[i]));
+                }
+                else
+                {
+                    i = rand.nextInt(rootlettetrs.length);
+                    txt1.setText(Character.toString(rootlettetrs[i]));
+                }
+            }
+            txtResult.setText("Astaghfirullah");
 
+            // button listners
+            btsky.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(num == 0)
+                    {
+                        txtResult.setText("Jaza'Allah");
+                    }
+                    else{
+                        txtResult.setText("Try again");
+                    }
+                }
+            });
+
+            btgrass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(num == 1)
+                    {
+                        txtResult.setText("Jaza'Allah");
+                    }
+                    else{
+                        txtResult.setText("Try again");
+                    }
+                }
+            });
+
+            btroot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(num == 2)
+                    {
+                        txtResult.setText("Jaza'Allah");
+                    }
+                    else{
+                        txtResult.setText("Try again");
+                    }
+                }
+            });
+        }
 
     public char[] skyletters = {'b', 'd', 'f', 'h', 'k', 'l', 't'};
     public char[] grassletters = {'a', 'c', 'e', 'i', 'm', 'n', 'o','r', 's', 'u', 'v','w', 'x', 'z'};
